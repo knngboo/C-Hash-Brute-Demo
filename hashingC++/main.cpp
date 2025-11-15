@@ -4,14 +4,11 @@
     Brute force hash cracking demonstration
 */
 
+#include <functional> // Required for std::hash
 #include <iostream>
 #include <string>
-#include <functional> // Required for hashing
 #include <chrono> // For timing
 using namespace std;
-
-// DECLERATION: code cracker menu selection
-void menu(int choice);
 
 int main() {
 
@@ -25,15 +22,20 @@ int main() {
 
   // Menu loop
   do {
-      void menu(choice);
+    cout << "\n=== Hash Cracking Menu ===" << endl;
+    cout << "1. Hash a password and crack it" << endl;
+    cout << "2. Exit" << endl;
+    cout << "Enter choice: ";
+    cin >> choice;
 
-    // option 1
     if (choice == 1) {
-      bool valid = false; // set
+      // ask for a password to hash with validation
+      bool valid = false;
       while (!valid) {
         cout << "\nEnter a 4-character password to hash (lowercase letters only): ";
         cin >> password;
         
+        // Check if exactly 4 characters
         if (password.length() != 4) {
           cout << "Error: Password must be exactly 4 characters long." << endl;
           continue;
@@ -90,13 +92,4 @@ int main() {
   } while (choice != 2);
 
   return 0;
-}
-
-// DEFINITION: code cracker menu selection
-void menu(int choice) {
-    cout << "\n=== Hash Cracking Menu ===" << endl;
-    cout << "1. Hash a password and crack it" << endl;
-    cout << "2. Exit" << endl;
-    cout << "Enter choice: ";
-    cin >> choice;
 }
